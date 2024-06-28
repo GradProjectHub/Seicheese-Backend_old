@@ -1,0 +1,52 @@
+services:
+  back-web:
+    image: seicheese:web
+    container_name: Seicheese-Web
+    ports:
+      - "8900:80"
+    volumes:
+      - ./src:/var/app
+    networks:
+      seicheese-backend:
+
+
+  back-app:
+    image: seicheese:app
+    container_name: Seicheese-app
+    volumes:
+      - ./src:/var/app
+      - vendor:/var/app/vendor
+    networks:
+      seicheese-backend:
+
+
+  back-db:
+    image: seicheese:db
+    container_name: Seicheese-db
+    ports:
+      - "3306:3306"
+    volumes:
+      - db-data:/var/lib/mysql
+    networks:
+      seicheese-backend:
+
+
+  back-pma:
+    image: seicheese:pma
+    container_name: seicheese-Admin
+    ports:
+      - "8901:80"
+    networks:
+      seicheese-backend:
+
+
+networks:
+  seicheese-backend:
+    driver: bridge
+    external: true
+
+volumes:
+  db-data:
+    driver: local
+  vendor:
+    driver: local
