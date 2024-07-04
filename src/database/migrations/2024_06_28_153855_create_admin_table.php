@@ -16,7 +16,7 @@ return new class extends Migration
             // $table->timestamps();
             $table->id();
             $table->bigInteger('user_id')->references('id')->on('users');
-            $table->timetable();
+            $table->timestamps();
         });
     }
 
