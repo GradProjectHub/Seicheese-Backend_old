@@ -6,17 +6,14 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
+    /**7
      * Run the migrations.
      */
     public function up(): void
     {
-        Schema::create('admin', function (Blueprint $table) {
-            // $table->id();
-            // $table->timestamps();
-            $table->id()->primary();
-            $table->forignid('user_id')->constrained('user')
-            $table->timestamps();
+        Schema::create('marker', function (Blueprint $table) {
+            $table->biginterger('id')->primary();
+            $table->
         });
     }
 
@@ -25,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('admin');
+        Schema::dropIfExists('marker');
     }
 };
